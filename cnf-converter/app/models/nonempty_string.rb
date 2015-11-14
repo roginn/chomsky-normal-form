@@ -1,0 +1,2 @@
+class NonemptyString < GrammarString
+end

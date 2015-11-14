@@ -1,0 +1,2 @@
+class NonterminalSymbol < GrammarSymbol
+end

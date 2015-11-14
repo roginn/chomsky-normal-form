@@ -1,0 +1,2 @@
+class EmptySymbol < Symbol
+end
