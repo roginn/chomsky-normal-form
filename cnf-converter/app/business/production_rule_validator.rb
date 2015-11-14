@@ -15,6 +15,10 @@ class ProductionRuleValidator
       raise ProductionRuleValidationError.new 'LHS should be a nonterminal symbol'
     end
 
+    if rhs.any? { |string| string.to_s == lhs.to_s }
+      raise ProductionRuleValidationError.new 'LHS should not appear on the RHS (recursive rule)'
+    end
+
     unless rhs.is_a? Array and rhs.all? { |e| e.is_a? GrammarString }
       raise RuntimeError.new 'Internal Error: RHS should be an array of grammar strings'
     end
