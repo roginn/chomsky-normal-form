@@ -24,12 +24,13 @@ class TokenParser
     rhs.split(PIPE_SYMBOL).reject(&:empty?)
   end
 
-  def check_validation
-    TokenValidator.new(self).check
-  end
-
   def parse
     check_validation
     [lhs, rhs_piped_derivations]
+  end
+
+  protected
+  def check_validation
+    TokenValidator.new(self).check
   end
 end

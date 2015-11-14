@@ -19,7 +19,7 @@ class SymbolParser
     when 'A'..'Z'
       NonterminalSymbol.new(c)
     when '_'
-      EmptySymbol.new
+      EmptySymbol.new(c)
     else
       raise SymbolValidationError.new "invalid character '#{c}'"
     end

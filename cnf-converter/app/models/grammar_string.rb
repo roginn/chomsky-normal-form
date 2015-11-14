@@ -5,6 +5,14 @@ class GrammarString
     @symbols = symbols
   end
 
+  def to_s
+    @symbols.map { |s| s.to_s }.join
+  end
+
+  def ==(other)
+    self.to_s == other.to_s
+  end
+
   def nonterminal_count
     @symbols.select { |s| !s.terminal? }.count
   end

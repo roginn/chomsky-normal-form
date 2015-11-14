@@ -30,7 +30,7 @@ class TokenValidator
 
   class TokenValidationError < RuntimeError
     def initialize(msg)
-      super "Malformed string: #{msg}"
+      super "Malformed input string: #{msg}"
     end
   end
 end
