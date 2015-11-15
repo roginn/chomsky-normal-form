@@ -5,6 +5,7 @@ module GrammarTransformations
     end
 
     def transformed
+      @grammar.deep_dup
     end
   end
 end

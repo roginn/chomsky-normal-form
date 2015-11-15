@@ -19,7 +19,7 @@ class GrammarConverter
     GrammarTransformations.const_get(step_class).new(*args).transformed
   end
 
-  def steps_results
+  def results
     (0..(STEPS.size-1)).inject([@grammar]) do |acc, step_number|
       grammar = acc.last
       acc << call_step(step_number, grammar)
