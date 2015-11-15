@@ -15,7 +15,8 @@ class GrammarConverter
   end
 
   def call_step(number, *args)
-    public_send STEPS[number], *args
+    step_class = STEPS[number].to_s.camelize
+    GrammarTransformations.const_get(step_class).new(*args).transformed
   end
 
   def steps_results
@@ -24,33 +25,4 @@ class GrammarConverter
       acc << call_step(step_number, grammar)
     end
   end
-
-  def initial_symbol(grammar)
-    start_symbol = grammar.start_symbol
-    new_first_symbol = GrammarSymbol.new('S0')
-    new_first_string = GrammarString.new([start_symbol])
-    new_first_rule = ProductionRule.new(new_first_symbol, [new_first_string])
-    Grammar.new([new_first_rule] + grammar.production_rules)
-  end
-
-  def nonsolitary_terminals(grammar)
-    grammar.deep_dup
-  end
-
-  def limit_rhs_nonterminals(grammar)
-    grammar.deep_dup
-  end
-
-  def nullable_rules(grammar)
-    grammar.deep_dup
-  end
-
-  def unit_rules(grammar)
-    grammar.deep_dup
-  end
-
-  def useless_nonterminals(grammar)
-    grammar.deep_dup
-  end
-
 end
