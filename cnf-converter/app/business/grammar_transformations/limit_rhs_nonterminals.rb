@@ -34,7 +34,7 @@ module GrammarTransformations
       new_symbols = []
       string = string.deep_dup
       first_symbol = string.symbols.first
-      string.symbols.delete first_symbol
+      string.symbols.delete_at 0
       new_derivation = create_derivation(string)
       new_nonterminal = new_derivation.lhs
       NonemptyString.new [first_symbol, new_nonterminal]
