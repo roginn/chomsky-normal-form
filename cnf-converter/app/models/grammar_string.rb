@@ -1,6 +1,8 @@
 class GrammarString
   attr_reader :symbols
 
+  delegate :size, :[], :each, :all?, :any?, to: :symbols
+
   def initialize(symbols)
     @symbols = symbols
   end

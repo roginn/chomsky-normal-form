@@ -20,4 +20,8 @@ class GrammarSymbol
   def empty_symbol?
     false
   end
+
+  def start_symbol?
+    label == 'S0'
+  end
 end
