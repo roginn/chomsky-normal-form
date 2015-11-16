@@ -27,6 +27,10 @@ class Grammar
     end
   end
 
+  def derived_by(nonterminal)
+    @production_rules.select { |r| r.lhs.to_s == nonterminal.to_s }
+  end
+
   def start_symbol
     @start_symbol ||= @production_rules[0].lhs
   end
