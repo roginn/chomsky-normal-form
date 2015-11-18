@@ -3,10 +3,42 @@
   <head>
   </head>
   <body>
-    Enter grammar:<br>
-    <%= form_for :grammar do |f| %>
-      <%= f.text_area :grammar %>
-      <%= f.submit %>
-    <% end %>
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Sobre</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Conversor para a Forma Normal de Chomsky</h3>
+      </div>
+      <div class="row converter">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="how-to">
+            A notação aceita para a gramática de entrada é a seguinte:
+            <ul>
+              <li>
+                Símbolos terminais: representados por letras minúsculas (<strong>a</strong> a <strong>z</strong>)
+              </li>
+              <li>
+                Símbolos não terminais: representados por letras maiúsculas (<strong>A</strong> a <strong>Z</strong>)
+              </li>
+              <li>
+                String vazia: representada pelo caractere underscore (<strong>_</strong>)
+              </li>
+            </ul>
+          </div>
+          <div class="grammar-form">
+            <%= form_for :grammar do |f| %>
+              <%= f.text_area :grammar, { class: 'form-control' } %>
+              <%= f.submit 'Converter Gramática', {class: 'btn btn-lg btn-primary btn-block' } %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
   </body>
 </html>
