@@ -7,7 +7,7 @@ B -> b | bAb
     EOS
   end
 
-  def post
+  def convert
     input_grammar = params[:grammar][:grammar]
     parser = GrammarParser.new(input_grammar)
     @grammar = parser.parse

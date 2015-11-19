@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'grammars#index', via: :get
 
   controller 'grammars' do
-    post '/' => :post
+    post '/' => :convert
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
