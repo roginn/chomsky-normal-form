@@ -4,20 +4,12 @@
   </head>
   <body>
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">Sobre</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Conversor para a Forma Normal de Chomsky</h3>
-      </div>
+      <%= render 'header' %>
       <div class="row converter">
         <div class="col-md-2"></div>
         <div class="col-md-8">
           <div class="how-to">
-            A notação aceita para a gramática de entrada é a seguinte:
+            A notação aceita para a gramática de entrada obedece às regras:
             <ul>
               <li>
                 Símbolos terminais: representados por letras minúsculas (<strong>a</strong> a <strong>z</strong>)
@@ -28,14 +20,18 @@
               <li>
                 String vazia: representada pelo caractere underscore (<strong>_</strong>)
               </li>
+              <li>
+                Derivação: representada por <strong>-></strong>
+              </li>
+              <li>
+                Agrupamento: representado pelo caractere pipe (<strong>|</strong>)
+              </li>
+              <li>
+                O primeiro símbolo não terminal é considerado o símbolo de início da gramática.
+              </li>
             </ul>
           </div>
-          <div class="grammar-form">
-            <%= form_for :grammar do |f| %>
-              <%= f.text_area :grammar, { class: 'form-control' } %>
-              <%= f.submit 'Converter Gramática', {class: 'btn btn-lg btn-primary btn-block' } %>
-            <% end %>
-          </div>
+          <%= render 'grammar_form' %>
         </div>
         <div class="col-md-2"></div>
       </div>
