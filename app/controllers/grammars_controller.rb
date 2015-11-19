@@ -2,7 +2,7 @@ class GrammarsController < ApplicationController
   def index
     @example_grammar = <<-EOS
 S -> A | b | aB
-A -> a | aBa
+A -> a | aBa | _
 B -> b | bAb
     EOS
   end
