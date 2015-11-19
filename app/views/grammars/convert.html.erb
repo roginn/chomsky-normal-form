@@ -9,33 +9,30 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
           <% if @results.present? %>
+            <div>
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <% @results.each_with_index do |r, idx| %>
+                  <li role="presentation" class="<%= idx == 0 ? 'active' : '' -%>"><a href="#step-<%= idx -%>" aria-controls="step-<%= idx -%>" role="tab" data-toggle="tab">Etapa <%= idx -%></a></li>
+                <% end %>
+              </ul>
 
-
-
-
-<div>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <% @results.each_with_index do |r, idx| %>
-      <li role="presentation" class="<%= idx == 0 ? 'active' : '' -%>"><a href="#step-<%= idx -%>" aria-controls="step-<%= idx -%>" role="tab" data-toggle="tab">Etapa <%= idx -%></a></li>
-    <% end %>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <% @results.each_with_index do |r, idx| %>
-      <div role="tabpanel" class="tab-pane fade <%= idx == 0 ? 'in active' : '' -%>" id="step-<%= idx -%>">
-        <div class="transformation-content">
-          <%= r.to_s.gsub(/\n/, '<br />').html_safe -%>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-
-
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <% @results.each_with_index do |r, idx| %>
+                  <div role="tabpanel" class="tab-pane fade <%= idx == 0 ? 'in active' : '' -%>" id="step-<%= idx -%>">
+                    <div class="transformation-name">
+                      <h3>
+                        <%= @transformation_names[idx] -%>
+                      </h2>
+                    </div>
+                    <div class="transformation-content">
+                      <%= r.to_s.gsub(/\n/, '<br />').html_safe -%>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           <% else %>
             <p><%= @errors %></p>
           <% end %>

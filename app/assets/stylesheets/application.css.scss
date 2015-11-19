@@ -57,10 +57,20 @@ body {
 }
 
 textarea {
-   font-family: 'Source Code Pro';
+ font-family: 'Source Code Pro';
+}
+
+.transformation-name {
+  height: 60px;
+  margin: 20px 40px;
+  font-family: 'Lato', sans-serif;
 }
 
 .transformation-content {
-  padding: 15px;
+  padding-left: 40px;
   font-family: 'Source Code Pro';
+}
+
+.text-muted a {
+  text-decoration: none;
 }
