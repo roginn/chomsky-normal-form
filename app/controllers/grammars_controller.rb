@@ -19,13 +19,19 @@ B -> b | bAb
     ]
 
     input_grammar = params[:grammar][:grammar]
-    parser = GrammarParser.new(input_grammar)
-    @grammar = parser.parse
-    if @grammar.present?
-      gc = GrammarConverter.new(@grammar)
-      @results = gc.results
+
+    if input_grammar.present?
+      parser = GrammarParser.new(input_grammar)
+      @grammar = parser.parse
+      if @grammar.present?
+        gc = GrammarConverter.new(@grammar)
+        @results = gc.results
+      else
+        @errors = parser.errors.to_s
+      end
     else
-      @errors = parser.errors.to_s
+      redirect_to :root
     end
+
   end
 end
