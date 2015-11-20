@@ -48,6 +48,7 @@ module GrammarTransformations
 
     def remove_empty_strings
       @grammar.production_rules.each do |rule|
+        next if rule.lhs.start_symbol?
         rule.rhs.select { |s| s.empty_string? }.each do |es|
           rule.rhs.delete es
         end
@@ -72,8 +73,8 @@ module GrammarTransformations
     end
 
     def omitted_nullables(string)
-      nullable_combinations(string).select { |a| a.any? }.map do |a|
-        NonemptyString.new(a)
+      nullable_combinations(string).map do |a|
+        a.any? ? NonemptyString.new(a) : EmptyString.new([EmptySymbol.new('_')])
       end
     end
 
